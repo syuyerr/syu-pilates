@@ -18,8 +18,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Onest:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="preload" as="image" href="img/hero-1600.webp" imagesrcset="img/hero-800.webp 800w, img/hero-1600.webp 1600w" imagesizes="(max-width: 760px) 100vw, 42vw">
-  <link rel="stylesheet" href="styles.css?v=7">
+  <link rel="preload" as="image" href="img/mirror-1400.webp" imagesrcset="img/mirror-800.webp 800w, img/mirror-1400.webp 1400w" imagesizes="(max-width: 760px) 100vw, 42vw">
+  <link rel="stylesheet" href="styles.css?v=9">
 </head>
 <body id="top">
 
@@ -33,16 +33,16 @@
     </a>
 
     <nav class="nav" id="nav" aria-label="Разделы сайта">
+      <a href="#about">Обо мне</a>
       <a href="#how">Как проходят</a>
       <a href="#for">Для кого</a>
-      <a href="#about">Обо мне</a>
       <a href="#reviews">Отзывы</a>
       <a href="#prices">Цены</a>
       <a href="#faq">Вопросы</a>
     </nav>
 
     <div class="header-actions">
-      <button class="btn btn-primary btn-sm" type="button" data-book>Записаться</button>
+      <button class="btn btn-primary btn-sm" type="button" data-book data-plan="diag">Записаться</button>
       <button class="nav-toggle" type="button" aria-controls="nav" aria-expanded="false" aria-label="Открыть меню">
         <span></span><span></span>
       </button>
@@ -59,32 +59,49 @@
         <p class="eyebrow">Персональные занятия · онлайн</p>
         <h1 class="hero-title">Персональный пилатес <em>у&nbsp;вас дома</em></h1>
         <p class="hero-lede">
-          Я&nbsp;— Сью, тренер по&nbsp;пилатесу. Занимаемся один на&nbsp;один по&nbsp;видеосвязи: я&nbsp;вижу, как вы&nbsp;двигаетесь, поправляю и&nbsp;собираю программу под ваше тело&nbsp;— для здоровой спины, восстановления после родов или самого первого опыта.
+          Индивидуальные занятия по&nbsp;видеосвязи для здоровой спины, восстановления после родов или самого первого опыта в&nbsp;спорте.
         </p>
         <div class="hero-cta">
-          <button class="btn btn-primary" type="button" data-book>
-            Бесплатная диагностика <span class="btn-note">15–20&nbsp;мин</span>
+          <button class="btn btn-primary btn-hero" type="button" data-book data-plan="diag">
+            <span>Бесплатная диагностика</span> <span class="btn-note">15–20&nbsp;мин</span>
           </button>
           <a class="link-arrow" href="#prices">Смотреть цены</a>
         </div>
 
         <dl class="facts">
-          <div><dt>Формат</dt><dd>1&nbsp;на&nbsp;1 по&nbsp;видеосвязи</dd></div>
-          <div><dt>Занятие</dt><dd>55&nbsp;минут</dd></div>
-          <div><dt>Стоимость</dt><dd>от&nbsp;1&nbsp;200&nbsp;₽</dd></div>
+          <div><dt>Формат</dt><dd>Индивидуально</dd></div>
+          <div><dt>Занятие</dt><dd><span class="nowrap">60–70</span>&nbsp;минут</dd></div>
+          <div><dt>Стоимость</dt><dd>от&nbsp;800&nbsp;₽</dd></div>
         </dl>
       </div>
 
       <figure class="hero-photo">
         <img
-          src="img/hero-1600.webp"
-          srcset="img/hero-800.webp 800w, img/hero-1600.webp 1600w"
+          src="img/mirror-1400.webp"
+          srcset="img/mirror-800.webp 800w, img/mirror-1400.webp 1400w"
           sizes="(max-width: 760px) 100vw, 42vw"
-          width="1600" height="2400"
-          alt="Сью тянется руками вверх у стены, на которой лежат солнечные тени от окна"
+          width="1400" height="2123"
+          alt="Сью в спортивном топе сидит на полу и улыбается, фотографируя себя в зеркале"
           fetchpriority="high">
         <figcaption>Сью — тренер по&nbsp;пилатесу</figcaption>
       </figure>
+    </div>
+  </section>
+
+  <!-- Обо мне -->
+  <section class="section about" id="about">
+    <div class="wrap about-grid">
+      <figure class="about-photo">
+        <img src="img/about-1280.webp" srcset="img/about-800.webp 800w, img/about-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 56vw"
+          width="1280" height="853" loading="lazy"
+          alt="Сью улыбается, подперев лицо ладонями, в тёплом солнечном свете">
+      </figure>
+
+      <div class="about-body">
+        <h2 class="h2">Привет, я <em>Сью</em></h2>
+        <p>Я&nbsp;тренер по&nbsp;пилатесу и&nbsp;веду персональные занятия онлайн. Мой главный принцип: тело меняется не&nbsp;тогда, когда его заставляют, а&nbsp;когда к&nbsp;нему прислушиваются.</p>
+        <p>Поэтому я&nbsp;работаю только один на&nbsp;один. На&nbsp;занятии я&nbsp;вижу, как вы&nbsp;двигаетесь, где зажимаетесь, теряете опору или задерживаете дыхание,&nbsp;— сразу поправляю и&nbsp;собираю программу под ваше тело. На&nbsp;групповом онлайн-уроке этого не&nbsp;заметить.</p>
+      </div>
     </div>
   </section>
 
@@ -112,7 +129,7 @@
           <li>
             <span class="step-num">02</span>
             <div>
-              <h3>Диагностика — <span class="nowrap">15–20 минут</span>, бесплатно</h3>
+              <h3>Предварительная диагностика — <span class="nowrap">15–20 минут</span>, бесплатно</h3>
               <p>Созваниваемся по&nbsp;видео: расспрошу о&nbsp;самочувствии и&nbsp;целях, посмотрю осанку и&nbsp;пару простых движений. Без нагрузки и&nbsp;обязательств.</p>
             </div>
           </li>
@@ -127,7 +144,7 @@
             <span class="step-num">04</span>
             <div>
               <h3>Занятия по видеосвязи</h3>
-              <p>55&nbsp;минут в&nbsp;Zoom, Telegram или ВК-звонке. Я&nbsp;вижу вас целиком и&nbsp;поправляю в&nbsp;реальном времени.</p>
+              <p><span class="nowrap">60–70</span>&nbsp;минут в&nbsp;Zoom, Telegram или ВК-звонке. Я&nbsp;вижу вас целиком и&nbsp;поправляю в&nbsp;реальном времени.</p>
             </div>
           </li>
         </ol>
@@ -237,34 +254,12 @@
     </div>
   </section>
 
-  <!-- Обо мне -->
-  <section class="section about" id="about">
-    <div class="wrap about-grid">
-      <figure class="about-photo">
-        <img src="img/about-1280.webp" srcset="img/about-800.webp 800w, img/about-1280.webp 1280w" sizes="(max-width: 760px) 100vw, 56vw"
-          width="1280" height="853" loading="lazy"
-          alt="Сью улыбается, подперев лицо ладонями, в тёплом солнечном свете">
-      </figure>
-
-      <div class="about-body">
-        <h2 class="h2">Привет, я <em>Сью</em></h2>
-        <p>Я&nbsp;тренер по&nbsp;пилатесу и&nbsp;веду персональные занятия онлайн. Мой главный принцип: тело меняется не&nbsp;тогда, когда его заставляют, а&nbsp;когда к&nbsp;нему прислушиваются.</p>
-        <p>Поэтому я&nbsp;работаю только один на&nbsp;один. Так я&nbsp;вижу, где вы&nbsp;зажимаетесь, где теряете опору и&nbsp;задерживаете дыхание. На&nbsp;групповом онлайн-уроке этого не&nbsp;заметить.</p>
-
-        <dl class="about-facts">
-          <div><dt>С чем работаю</dt><dd>Спина и&nbsp;осанка, восстановление после родов, новички, тонус</dd></div>
-          <div><dt>Формат</dt><dd>Только индивидуально, по&nbsp;видеосвязи</dd></div>
-        </dl>
-      </div>
-    </div>
-  </section>
-
   <!-- Отзывы (с Профи.ру, тексты без изменений) -->
   <section class="section reviews" id="reviews">
     <div class="wrap">
       <div class="section-head">
         <h2 class="h2">Что говорят <em>ученицы</em></h2>
-        <p class="lead">Отзывы с&nbsp;Профи.ру, где я&nbsp;веду занятия.</p>
+        <p class="lead">Отзывы с&nbsp;<a class="text-link" href="https://profi.ru/profile/YeremyanSM" target="_blank" rel="noopener">Профи.ру</a>, где я&nbsp;веду занятия.</p>
       </div>
 
       <article class="review-featured">
@@ -312,26 +307,30 @@
     <div class="wrap">
       <div class="section-head">
         <h2 class="h2">Стоимость <em>занятий</em></h2>
-        <p class="lead">Все занятия индивидуальные, 55&nbsp;минут, по&nbsp;видеосвязи. Начать можно с&nbsp;бесплатной диагностики.</p>
+        <p class="lead">Все занятия индивидуальные, <span class="nowrap">60–70</span>&nbsp;минут, по&nbsp;видеосвязи. Начать можно с&nbsp;бесплатной диагностики.</p>
       </div>
 
       <div class="trial">
         <div class="trial-price">0&nbsp;<span class="rub">₽</span></div>
         <div class="trial-body">
           <p class="tag">Первый шаг</p>
-          <h3>Диагностика, <span class="nowrap">15–20&nbsp;минут</span></h3>
+          <h3>Предварительная диагностика, <span class="nowrap">15–20&nbsp;минут</span></h3>
           <p>Знакомимся, разбираем ваш запрос и&nbsp;осанку, решаем, с&nbsp;чего начать. Без обязательств.</p>
         </div>
-        <button class="btn btn-primary" type="button" data-book data-plan="бесплатная диагностика">Записаться бесплатно</button>
+        <button class="btn btn-primary" type="button" data-book data-plan="diag">Записаться бесплатно</button>
       </div>
 
       <div class="plans">
         <article class="plan">
           <h3>Разовое занятие</h3>
           <p class="plan-price">1&nbsp;500&nbsp;<span class="rub">₽</span></p>
-          <p class="plan-meta">55&nbsp;минут</p>
+          <p class="plan-meta"><span class="nowrap">60–70</span>&nbsp;минут</p>
+          <p class="plan-trial">
+            <span class="plan-trial-label">Первое пробное занятие</span>
+            <span class="plan-trial-price"><s aria-label="вместо 1 500 рублей">1&nbsp;500&nbsp;₽</s> 800&nbsp;₽</span>
+          </p>
           <p class="plan-desc">Чтобы попробовать формат или заниматься без жёсткого графика.</p>
-          <button class="btn btn-ghost" type="button" data-book data-plan="разовое занятие">Записаться</button>
+          <button class="btn btn-ghost" type="button" data-book data-plan="single">Записаться</button>
         </article>
 
         <article class="plan">
@@ -339,7 +338,7 @@
           <p class="plan-price">5&nbsp;500&nbsp;<span class="rub">₽</span></p>
           <p class="plan-meta">1&nbsp;375&nbsp;₽ за&nbsp;занятие · действует 5&nbsp;недель</p>
           <p class="plan-desc">Раз в&nbsp;неделю: чтобы познакомиться с&nbsp;методом и&nbsp;поддерживать тело в&nbsp;тонусе.</p>
-          <button class="btn btn-ghost" type="button" data-book data-plan="пакет из 4 занятий">Записаться</button>
+          <button class="btn btn-ghost" type="button" data-book data-plan="pack4">Записаться</button>
         </article>
 
         <article class="plan plan-featured">
@@ -348,7 +347,7 @@
           <p class="plan-price">9&nbsp;600&nbsp;<span class="rub">₽</span></p>
           <p class="plan-meta">1&nbsp;200&nbsp;₽ за&nbsp;занятие · действует 9&nbsp;недель</p>
           <p class="plan-desc">Дважды в&nbsp;неделю: заметный результат для спины и&nbsp;осанки за&nbsp;1–2 месяца.</p>
-          <button class="btn btn-primary" type="button" data-book data-plan="пакет из 8 занятий">Записаться</button>
+          <button class="btn btn-primary" type="button" data-book data-plan="pack8">Записаться</button>
         </article>
       </div>
 
@@ -365,7 +364,7 @@
       <div class="faq-side">
         <h2 class="h2">Частые <em>вопросы</em></h2>
         <p class="lead">Не&nbsp;нашли ответ? Спросите напрямую&nbsp;— отвечу в&nbsp;течение дня.</p>
-        <button class="btn btn-ghost-dark" type="button" data-book data-plan="вопрос">Задать вопрос</button>
+        <button class="btn btn-ghost-dark" type="button" data-book data-plan="question">Задать вопрос</button>
         <figure class="faq-photo">
           <img src="img/ball-800.webp" width="800" height="1067" loading="lazy"
             alt="Рука Сью держит фиолетовый массажный мяч на фоне стены с полосами солнечного света">
@@ -425,9 +424,9 @@
       </div>
 
       <figure class="contact-photo">
-        <img src="img/mirror-1400.webp" srcset="img/mirror-800.webp 800w, img/mirror-1400.webp 1400w" sizes="(max-width: 760px) 100vw, 34vw"
-          width="1400" height="2123" loading="lazy"
-          alt="Сью в спортивном топе сидит на полу и улыбается, фотографируя себя в зеркале">
+        <img src="img/hero-1600.webp" srcset="img/hero-800.webp 800w, img/hero-1600.webp 1600w" sizes="(max-width: 760px) 100vw, 34vw"
+          width="1600" height="2400" loading="lazy"
+          alt="Сью тянется руками вверх у стены, на которой лежат солнечные тени от окна">
       </figure>
     </div>
   </section>
@@ -437,14 +436,14 @@
 <footer class="footer">
   <div class="wrap footer-inner">
     <p class="footer-brand"><span>Сью</span> персональный пилатес онлайн</p>
-    <p>Еремян Сюзанна Михайловна, самозанятая</p>
+    <p>Еремян Сюзанна Михайловна, ИНН 263111673346</p>
     <p><a href="#">Политика конфиденциальности</a> · © 2026</p>
   </div>
 </footer>
 
 <!-- Мобильная кнопка записи -->
 <div class="mobile-bar" aria-hidden="true">
-  <button class="btn btn-primary" type="button" data-book tabindex="-1">Бесплатная диагностика · 15–20 мин</button>
+  <button class="btn btn-primary" type="button" data-book data-plan="diag" tabindex="-1">Бесплатная диагностика · <span class="nowrap">15–20 мин</span></button>
 </div>
 
 <!-- Окно записи -->
@@ -459,8 +458,11 @@
     <a class="btn btn-dark" data-messenger="telegram" href="https://t.me/syu_curly" target="_blank" rel="noopener">Telegram</a>
     <a class="btn btn-dark" data-messenger="vk" href="https://vk.ru/mrrs13" target="_blank" rel="noopener">ВКонтакте</a>
   </div>
+  <p class="book-hint">Текст сообщения мы&nbsp;скопируем&nbsp;— если он&nbsp;не&nbsp;появится в&nbsp;чате сам, просто вставьте его.</p>
 </dialog>
 
-<script src="script.js?v=5"></script>
+<div class="toast" role="status" aria-live="polite"></div>
+
+<script src="script.js?v=8"></script>
 </body>
 </html>

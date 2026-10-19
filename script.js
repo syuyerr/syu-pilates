@@ -6,25 +6,35 @@ const CONTACTS = {
   vk: 'mrrs13',              // короткое имя страницы ВКонтакте
 };
 
-const DEFAULT_PLAN = 'бесплатная диагностика';
+/* Тарифы: label — подпись в окне записи,
+   what — что подставить во фразу «Хочу записаться на …». */
+const PLANS = {
+  diag: { label: 'Бесплатная диагностика', what: 'бесплатную диагностику' },
+  single: { label: 'Разовое занятие', what: 'разовое занятие' },
+  pack4: { label: 'Пакет из 4 занятий', what: 'пакет из 4 занятий' },
+  pack8: { label: 'Пакет из 8 занятий', what: 'пакет из 8 занятий' },
+  question: { label: 'Вопрос о занятиях', message: 'Здравствуйте, Сью! У меня вопрос о занятиях.' },
+};
+const DEFAULT_PLAN = 'diag';
 
-function messageFor(plan) {
-  if (plan === 'вопрос') return 'Здравствуйте, Сью! У меня вопрос о занятиях.';
-  return `Здравствуйте, Сью! Хочу записаться: ${plan}.`;
+function messageFor(key) {
+  const plan = PLANS[key] || PLANS[DEFAULT_PLAN];
+  return plan.message || `Здравствуйте, Сью! Хочу записаться на ${plan.what}.`;
 }
 
-function linkFor(messenger, plan) {
-  const text = encodeURIComponent(messageFor(plan));
+function linkFor(messenger, message) {
   switch (messenger) {
-    case 'telegram': return `https://t.me/${CONTACTS.telegram}?text=${text}`;
+    case 'telegram': return `https://t.me/${CONTACTS.telegram}?text=${encodeURIComponent(message)}`;
     case 'vk': return `https://vk.ru/${CONTACTS.vk}`;
   }
   return '#contact';
 }
 
-function setLinks(root, plan) {
+function setLinks(root, key) {
+  const message = messageFor(key);
   root.querySelectorAll('[data-messenger]').forEach((a) => {
-    a.href = linkFor(a.dataset.messenger, plan);
+    a.href = linkFor(a.dataset.messenger, message);
+    a.dataset.message = message;
   });
 }
 
@@ -43,13 +53,11 @@ document.querySelectorAll('[data-handle]').forEach((el) => {
 const dialog = document.getElementById('book');
 const planLabel = document.getElementById('book-plan');
 
-function capitalize(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
-
 document.querySelectorAll('[data-book]').forEach((btn) => {
   btn.addEventListener('click', () => {
-    const plan = btn.dataset.plan || DEFAULT_PLAN;
-    planLabel.textContent = plan === 'вопрос' ? 'Вопрос о занятиях' : capitalize(plan);
-    setLinks(dialog, plan);
+    const key = PLANS[btn.dataset.plan] ? btn.dataset.plan : DEFAULT_PLAN;
+    planLabel.textContent = PLANS[key].label;
+    setLinks(dialog, key);
 
     if (typeof dialog.showModal === 'function') {
       dialog.showModal();
@@ -62,6 +70,31 @@ document.querySelectorAll('[data-book]').forEach((btn) => {
 // Закрытие по клику на фон
 dialog.addEventListener('click', (e) => {
   if (e.target === dialog) dialog.close();
+});
+
+/* ---------- Копирование текста сообщения ----------
+   ВКонтакте не умеет подставлять текст по ссылке, а Telegram —
+   не во всех приложениях. Поэтому текст заранее копируем в буфер. */
+
+const toast = document.querySelector('.toast');
+let toastTimer;
+
+function showToast(text) {
+  toast.textContent = text;
+  toast.classList.add('is-visible');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 5000);
+}
+
+document.querySelectorAll('[data-messenger]').forEach((a) => {
+  a.addEventListener('click', () => {
+    if (a.closest('dialog')) dialog.close();
+    const message = a.dataset.message;
+    if (!message || !navigator.clipboard) return;
+    navigator.clipboard.writeText(message)
+      .then(() => showToast('Текст сообщения скопирован — если он не появился в чате, просто вставьте его.'))
+      .catch(() => {});
+  });
 });
 
 /* ---------- Меню на мобильных ---------- */

@@ -134,6 +134,8 @@ button { font: inherit; color: inherit; }
 .btn-primary:hover { background: var(--accent-hover); }
 
 .btn-note {
+  flex-shrink: 0;
+  white-space: nowrap;
   padding: 4px 10px;
   border-radius: 999px;
   background: rgba(255, 248, 241, .18);
@@ -150,6 +152,15 @@ button { font: inherit; color: inherit; }
 
 .btn-dark { background: var(--ink); color: var(--milk); }
 .btn-dark:hover { background: var(--olive-dark); }
+
+.text-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: color .2s ease;
+}
+.text-link:hover { color: var(--accent-hover); }
 
 .link-arrow {
   display: inline-flex;
@@ -304,7 +315,7 @@ button { font: inherit; color: inherit; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 50% 35%;
+  object-position: 50% 30%;
 }
 .hero-photo figcaption {
   position: absolute;
@@ -502,6 +513,8 @@ button { font: inherit; color: inherit; }
 
 /* ---------- Обо мне ---------- */
 
+.about { background: var(--sand); }
+
 .about-grid {
   display: grid;
   grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
@@ -510,19 +523,8 @@ button { font: inherit; color: inherit; }
 }
 .about-photo { border-radius: var(--radius); overflow: hidden; }
 
-.about-body > p { margin-top: 20px; color: var(--ink-soft); max-width: 32em; }
+.about-body > p { margin-top: 20px; color: var(--ink-soft); max-width: 32em; font-size: 1.05rem; }
 .about-body .h2 { margin-bottom: 12px; }
-
-.about-facts { margin-top: 36px; }
-.about-facts div {
-  display: grid;
-  grid-template-columns: 130px minmax(0, 1fr);
-  gap: 16px;
-  padding: 14px 0;
-  border-top: 1px solid var(--line);
-}
-.about-facts dt { font-size: 14px; color: var(--ink-soft); }
-.about-facts dd { font-weight: 500; }
 
 /* ---------- Отзывы ---------- */
 
@@ -628,6 +630,29 @@ button { font: inherit; color: inherit; }
 .plan-meta { margin-top: 10px; font-size: 14px; opacity: .78; }
 .plan-desc { margin-top: 20px; margin-bottom: 32px; opacity: .9; }
 .plan .btn { margin-top: auto; }
+
+/* Первое пробное занятие внутри карточки разового */
+.plan-trial {
+  margin-top: 18px;
+  padding: 12px 16px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 12px;
+  border-radius: 12px;
+  background: rgba(246, 241, 232, .09);
+  font-size: 15px;
+}
+.plan-trial-price { white-space: nowrap; font-weight: 600; font-size: 1.15rem; color: #F2B796; }
+.plan-trial-price s {
+  margin-right: 6px;
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(246, 241, 232, .55);
+  text-decoration-thickness: 1px;
+}
+.plan-trial + .plan-desc { margin-top: 16px; }
 .plan-price, .trial-price { font-variant-numeric: lining-nums; }
 /* В антикве знак рубля кривой — набираем его гротеском */
 .rub {
@@ -816,6 +841,29 @@ button { font: inherit; color: inherit; }
 }
 .book-text { margin-top: 12px; color: var(--ink-soft); font-size: 15px; }
 .book-links { margin-top: 28px; display: grid; gap: 10px; }
+.book-hint { margin-top: 14px; font-size: 13px; line-height: 1.45; color: var(--ink-soft); }
+
+/* Уведомление «текст скопирован» */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(24px + env(safe-area-inset-bottom));
+  z-index: 60;
+  width: max-content;
+  max-width: calc(100% - 32px);
+  padding: 14px 20px;
+  border-radius: 14px;
+  background: var(--ink);
+  color: var(--milk);
+  font-size: 14px;
+  line-height: 1.4;
+  box-shadow: 0 12px 30px rgba(37, 30, 25, .25);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 8px);
+  transition: opacity .25s ease, transform .25s ease;
+}
+.toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
 
 /* ---------- Мобильная кнопка ---------- */
 
@@ -869,7 +917,7 @@ button { font: inherit; color: inherit; }
 
   .faq-photo { display: none; }
 
-  .contact-photo { order: -1; aspect-ratio: 4 / 3; }
+  .contact-photo { order: -1; aspect-ratio: 4 / 5; max-height: 70svh; }
   .contact-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
 }
 
@@ -880,7 +928,7 @@ button { font: inherit; color: inherit; }
 
   .hero { padding-top: 4px; }
   .hero-photo { aspect-ratio: auto; height: 46svh; min-height: 300px; }
-  .hero-photo img { object-position: 50% 22%; }
+  .hero-photo img { object-position: 50% 16%; }
   .hero .eyebrow { display: none; }
   .hero-title { margin-top: 4px; }
   .hero-lede { margin-top: 20px; }
@@ -888,7 +936,9 @@ button { font: inherit; color: inherit; }
   .hero-photo figcaption { left: 12px; bottom: 12px; }
   .hero-cta { gap: 16px 24px; }
   .hero-cta .btn { width: 100%; }
-  .facts { padding-top: 36px; gap: 12px; }
+  .btn-hero { padding: 10px 16px 10px 22px; font-size: 15px; gap: 8px; }
+  .btn-hero > span:first-child { flex: 1 1 auto; text-align: center; }
+  .facts { padding-top: 36px; gap: 12px; grid-template-columns: 1.3fr 1.1fr .8fr; }
   .facts dd { font-size: .95rem; }
 
   .steps li { grid-template-columns: 52px minmax(0, 1fr); padding: 22px 0; }
@@ -902,7 +952,6 @@ button { font: inherit; color: inherit; }
   .quote > img { object-position: 42% 50%; }
   .quote::after { background: linear-gradient(180deg, rgba(20, 17, 24, 0) 25%, rgba(20, 17, 24, .7) 85%); }
 
-  .about-facts div { grid-template-columns: 1fr; gap: 2px; }
 
   .review-featured { grid-template-columns: 1fr; }
   .review-meta .tag { margin-left: 0; margin-top: 10px; display: table; }
